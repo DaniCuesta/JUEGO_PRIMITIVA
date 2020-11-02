@@ -56,7 +56,7 @@ public class Juego_primitiva {
         //tiene el array
         do {
             //Ahora solicito al usuario que introduzca un número 
-
+            System.out.println(" ");
             System.out.println("Introduce un número mayor que 10 y menor que 100");
             numero = reader.nextInt();
 
@@ -76,16 +76,16 @@ public class Juego_primitiva {
             }
 
             if (comprobador_num == true) {
-                for (int j = 0; j < secuencia_num.length; j++) {
 
-                    System.out.println("El número " + numero + " es correcto");
-                    System.out.println(cruces[j] + " ");
-                }
+                System.out.println("El número " + numero + " es correcto");
 
             } else {
 
                 System.out.println("El número " + numero + " no es correcto");
+                for (int j = 0; j < secuencia_num.length; j++) {
 
+                    System.out.print(cruces[j] + " ");
+                }
             }
         } while (contador < secuencia_num.length);
 
