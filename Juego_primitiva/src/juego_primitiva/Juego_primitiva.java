@@ -30,13 +30,13 @@ public class Juego_primitiva {
         Scanner reader = new Scanner(System.in);
 
         for (int i = 0; i < secuencia_num.length; i++) {
-//Se genera una secuencia de números menores que 100 y mayores que 10            
+            //Se genera una secuencia de números menores que 100 y mayores que 10            
             int aleatorio = (int) (Math.random() * 90 + 10);
-//Los números aleatorios se introducen en el array hasta que este esté completo           
+            //Los números aleatorios se introducen en el array hasta que este esté completo           
             secuencia_num[i] = aleatorio;
         }
-//Mediante la utilización de bucles anidados conseguimos que ninún número
-//se repita
+        //Mediante la utilización de bucles anidados conseguimos que ninún número
+        //se repita
         for (int i = 0; i < secuencia_num.length; i++) {
             for (int j = 0; j < secuencia_num.length;) {
                 if (secuencia_num[i] == secuencia_num[j] && i != j) {
@@ -48,10 +48,14 @@ public class Juego_primitiva {
         }
 
         System.out.println();
-//Con este do while consigo que el 
+        
+        //Con este do while consigo que me pida números tantas veces como posiciones 
+        //tiene el array
+
+
         do {
-//Ahora solicito al usuario que introduzca un número utilizando un panel de lectura
-//emergente
+            //Ahora solicito al usuario que introduzca un número utilizando un panel de lectura
+            //emergente
             numero = Integer.parseInt(JOptionPane.showInputDialog("Introduce un número menor"
                     + " que 100 y mayor que 10"));
             contador++;
