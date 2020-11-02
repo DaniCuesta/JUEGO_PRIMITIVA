@@ -19,7 +19,7 @@ public class Juego_primitiva {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
         int numero = 0;
         boolean comprobador_num = false;
         int tries = 0;
@@ -30,11 +30,13 @@ public class Juego_primitiva {
         Scanner reader = new Scanner(System.in);
 
         for (int i = 0; i < secuencia_num.length; i++) {
+
             //Se genera una secuencia de números menores que 100 y mayores que 10            
             int aleatorio = (int) (Math.random() * 90 + 10);
             //Los números aleatorios se introducen en el array hasta que este esté completo           
             secuencia_num[i] = aleatorio;
         }
+
         //Mediante la utilización de bucles anidados conseguimos que ninún número
         //se repita
         for (int i = 0; i < secuencia_num.length; i++) {
@@ -47,33 +49,38 @@ public class Juego_primitiva {
             }
         }
 
-        System.out.println();
-        
+        //Muestro la secuencia de números aleatoria que se ha generado y almacenado
+        //en el array, esto solo para que yo como programador pueda poner a prueba
+        //el programa más comodamente
         //Con este do while consigo que me pida números tantas veces como posiciones 
         //tiene el array
-
-
         do {
-            //Ahora solicito al usuario que introduzca un número utilizando un panel de lectura
-            //emergente
-            numero = Integer.parseInt(JOptionPane.showInputDialog("Introduce un número menor"
-                    + " que 100 y mayor que 10"));
+            //Ahora solicito al usuario que introduzca un número 
+
+            System.out.println("Introduce un número mayor que 10 y menor que 100");
+            numero = reader.nextInt();
+
             contador++;
 
             for (int j = 0; j < secuencia_num.length; j++) {
 
                 if (secuencia_num[j] == numero) {
                     comprobador_num = true;
-                    cruces[j] = String.valueOf(secuencia_num[j]);
+
+                    //Con esto lo que hago es convertir ese número a String para
+                    //poder añadirlo al array de cruces que es de tipo String
+                    cruces[j] = String.valueOf(numero);
 
                 }
 
             }
 
             if (comprobador_num == true) {
-                System.out.println("El número " + numero + " es correcto");
-                
-                
+                for (int j = 0; j < secuencia_num.length; j++) {
+
+                    System.out.println("El número " + numero + " es correcto");
+                    System.out.println(cruces[j] + " ");
+                }
 
             } else {
 
@@ -81,7 +88,7 @@ public class Juego_primitiva {
 
             }
         } while (contador < secuencia_num.length);
-        
+
     }
-    
+
 }
