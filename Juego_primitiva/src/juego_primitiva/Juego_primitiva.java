@@ -20,6 +20,7 @@ public class Juego_primitiva {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        boolean num_repetido = false;
         int numero = 0;
         boolean comprobador_num = false;
         int tries = 0;
@@ -35,60 +36,62 @@ public class Juego_primitiva {
             int aleatorio = (int) (Math.random() * 90 + 10);
             //Los números aleatorios se introducen en el array hasta que este esté completo           
             secuencia_num[i] = aleatorio;
-        }
 
-        //Mediante la utilización de bucles anidados conseguimos que ninún número
-        //se repita
-        for (int i = 0; i < secuencia_num.length; i++) {
-            for (int j = 0; j < secuencia_num.length;) {
-                if (secuencia_num[i] == secuencia_num[j] && i != j) {
-                    secuencia_num[j] = (int) (Math.random() * 90 + 10);
-                } else {
-                    j++;
+            //Mediante la utilización de bucles anidados conseguimos que ninún número
+            //se repita
+            do {
+                for (int k = 0; k < secuencia_num.length; k++) {
+                    for (int j = 0; j < secuencia_num.length;) {
+                        if (secuencia_num[k] == secuencia_num[j] && k != j) {
+                            num_repetido = true;
+                            secuencia_num[j] = (int) (Math.random() * 90 + 10);
+                        } else {
+                            j++;
+                        }
+                    }
                 }
-            }
-        }
+            } while (num_repetido == true);
+            //Muestro la secuencia de números aleatoria que se ha generado y almacenado
+            //en el array, esto solo para que yo como programador pueda poner a prueba
+            //el programa más comodamente
+            //Con este do while consigo que me pida números tantas veces como posiciones 
+            //tiene el array
+            do {
+                //Ahora solicito al usuario que introduzca un número 
+                System.out.println(" ");
+                System.out.println("Introduce un número mayor que 10 y menor que 100");
+                numero = reader.nextInt();
 
-        //Muestro la secuencia de números aleatoria que se ha generado y almacenado
-        //en el array, esto solo para que yo como programador pueda poner a prueba
-        //el programa más comodamente
-        //Con este do while consigo que me pida números tantas veces como posiciones 
-        //tiene el array
-        do {
-            //Ahora solicito al usuario que introduzca un número 
-            System.out.println(" ");
-            System.out.println("Introduce un número mayor que 10 y menor que 100");
-            numero = reader.nextInt();
+                contador++;
 
-            contador++;
-
-            for (int j = 0; j < secuencia_num.length; j++) {
-
-                if (secuencia_num[j] == numero) {
-                    comprobador_num = true;
-
-                    //Con esto lo que hago es convertir ese número a String para
-                    //poder añadirlo al array de cruces que es de tipo String
-                    cruces[j] = String.valueOf(numero);
-
-                }
-
-            }
-
-            if (comprobador_num == true) {
-
-                System.out.println("El número " + numero + " es correcto");
-
-            } else {
-
-                System.out.println("El número " + numero + " no es correcto");
                 for (int j = 0; j < secuencia_num.length; j++) {
 
-                    System.out.print(cruces[j] + " ");
+                    if (secuencia_num[j] == numero) {
+                        comprobador_num = true;
+
+                        //Con esto lo que hago es convertir ese número a String para
+                        //poder añadirlo al array de cruces que es de tipo String
+                        cruces[j] = String.valueOf(numero);
+
+                    }
+
                 }
-            }
-        } while (contador < secuencia_num.length);
+
+                if (comprobador_num == true) {
+
+                    System.out.println("El número " + numero + " es correcto");
+
+                } else {
+
+                    System.out.println("El número " + numero + " no es correcto");
+                    for (int j = 0; j < secuencia_num.length; j++) {
+
+                        System.out.print(cruces[j] + " ");
+                    }
+                }
+            } while (contador < secuencia_num.length);
+
+        }
 
     }
-
 }
