@@ -19,26 +19,31 @@ public class Juego_primitiva {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        //Aquí estoy defiiendo las variables
         boolean repeated_number = false;
         int numero = 0;
         boolean comprobador_num = false;
         int tries = 0;
         int contador = 0;
+       
+
+        //Aquí estoy definiendo los arrays
         int[] secuencia_num = new int[9];
         String[] cruces = {"X", "X", "X", "X", "X", "X", "X", "X", "X"};
 
         Scanner reader = new Scanner(System.in);
 
+        //Recorremos el array
         for (int i = 0; i < secuencia_num.length; i++) {
 
             //mientras el número esté repetido este proceso vuelve a empezar
             do {
-                //Se genera una secuencia de números menores que 100 y mayores que 10            
+                //Se genera un número menor que 100 y mayores que 10            
                 int random_num = (int) (Math.random() * 90 + 10);
 
                 //Una vez generado ese número aleatorio lo que hacemos aún sin incluirlo en el
-                //array es recorrer el array entero para comprobar si ese número está en otra 
-                //posición del array , es decir si está repetido
+                //array es recorrer el array entero para comprobar si ese número
+                //está repetido
                 for (int j = 0; j < secuencia_num.length; j++) {
 
                     if (random_num == secuencia_num[j]) {
@@ -53,8 +58,7 @@ public class Juego_primitiva {
 
             //Y si el número no está repetido la variable boleana repeated_number
             //se queda en false y el número se añade al array
-            numero = secuencia_num[i];
-
+       
         }
 
         do {
