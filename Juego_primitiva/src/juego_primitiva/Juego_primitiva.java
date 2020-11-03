@@ -19,7 +19,7 @@ public class Juego_primitiva {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        boolean num_repetido = false;
+        boolean repeated_number = false;
         int numero = 0;
         boolean comprobador_num = false;
         int tries = 0;
@@ -31,30 +31,32 @@ public class Juego_primitiva {
 
         for (int i = 0; i < secuencia_num.length; i++) {
 
-            //Se genera una secuencia de números menores que 100 y mayores que 10            
-            int aleatorio = (int) (Math.random() * 90 + 10);
-            //Los números aleatorios se introducen en el array hasta que este esté completo           
-            secuencia_num[i] = aleatorio;
-        }
-        //Mediante la utilización de bucles anidados conseguimos que ninún número
-        //se repita
-        do {
-            for (int k = 0; k < secuencia_num.length; k++) {
-                for (int j = 0; j < secuencia_num.length;) {
-                    if (secuencia_num[k] == secuencia_num[j] && k != j) {
-                        num_repetido = true;
-                        secuencia_num[j] = (int) (Math.random() * 90 + 10);
-                    } else {
-                        j++;
+            //mientras el número esté repetido este proceso vuelve a empezar
+            do {
+                //Se genera una secuencia de números menores que 100 y mayores que 10            
+                int random_num = (int) (Math.random() * 90 + 10);
+
+                //Una vez generado ese número aleatorio lo que hacemos aún sin incluirlo en el
+                //array es recorrer el array entero para comprobar si ese número está en otra 
+                //posición del array , es decir si está repetido
+                for (int j = 0; j < secuencia_num.length; j++) {
+
+                    if (random_num == secuencia_num[j]) {
+
+                        repeated_number = true;
+
                     }
+
                 }
-            }
-        } while (num_repetido == true);
-        //Muestro la secuencia de números aleatoria que se ha generado y almacenado
-        //en el array, esto solo para que yo como programador pueda poner a prueba
-        //el programa más comodamente
-        //Con este do while consigo que me pida números tantas veces como posiciones 
-        //tiene el array
+
+            } while (repeated_number == true);
+
+            //Y si el número no está repetido la variable boleana repeated_number
+            //se queda en false y el número se añade al array
+            numero = secuencia_num[i];
+
+        }
+
         do {
             //Ahora solicito al usuario que introduzca un número 
             System.out.println(" ");
