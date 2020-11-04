@@ -20,13 +20,13 @@ public class Juego_primitiva {
         // TODO code application logic here
 
         //Aquí estoy defiiendo las variables
+      
         boolean repeated_number = false;
         int numero = 0;
         boolean comprobador_num = false;
-        int tries = 0;
+        int tries = 15;
         int contador = 0;
-       
-
+        int random_num = 0;
         //Aquí estoy definiendo los arrays
         int[] secuencia_num = new int[9];
         String[] cruces = {"X", "X", "X", "X", "X", "X", "X", "X", "X"};
@@ -38,8 +38,9 @@ public class Juego_primitiva {
 
             //mientras el número esté repetido este proceso vuelve a empezar
             do {
+                repeated_number = false;
                 //Se genera un número menor que 100 y mayores que 10            
-                int random_num = (int) (Math.random() * 90 + 10);
+                random_num = (int) (Math.random() * 90 + 10);
 
                 //Una vez generado ese número aleatorio lo que hacemos aún sin incluirlo en el
                 //array es recorrer el array entero para comprobar si ese número
@@ -54,18 +55,25 @@ public class Juego_primitiva {
 
                 }
 
-            } while (repeated_number == true);
+            } while (repeated_number);
 
-            //Y si el número no está repetido la variable boleana repeated_number
-            //se queda en false y el número se añade al array
-       
+            secuencia_num[i] = random_num;
+
         }
+        for (int i = 0; i < secuencia_num.length; i++) {
 
+            System.out.println(secuencia_num[i]);
+        }
         do {
+            
+            comprobador_num = false;
+
             //Ahora solicito al usuario que introduzca un número 
             System.out.println(" ");
             System.out.println("Introduce un número mayor que 10 y menor que 100");
             numero = reader.nextInt();
+            
+          
 
             contador++;
 
@@ -89,12 +97,19 @@ public class Juego_primitiva {
             } else {
 
                 System.out.println("El número " + numero + " no es correcto");
-                for (int j = 0; j < secuencia_num.length; j++) {
 
-                    System.out.print(cruces[j] + " ");
-                }
             }
-        } while (contador < secuencia_num.length);
+
+            for (int j = 0; j < secuencia_num.length; j++) {
+
+                System.out.print(cruces[j] + " ");
+            }
+            
+            
+
+        } while (contador < secuencia_num.length && tries>0);
+        
+        
 
     }
 }
