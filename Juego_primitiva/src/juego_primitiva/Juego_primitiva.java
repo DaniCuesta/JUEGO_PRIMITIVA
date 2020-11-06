@@ -112,10 +112,10 @@ public class Juego_primitiva {
         //boleto significa que todos los números introducidos han sido correctos
         //y que por lo tanto eres millonaro¡io/a
         if (contador == secuencia_num.length) {
-            System.out.println("Eres millonario");
+            System.out.println("¡ENHORABUENA! ¡Eres millonario1!");
 
         } else if (tries == 0) {
-            System.out.println("Eres pobre ,intentalo otra vez");
+            System.out.println("Vaya sigues siendo pobre ,intentalo otra vez");
         } else {
             System.out.println("Has salido");
         }
