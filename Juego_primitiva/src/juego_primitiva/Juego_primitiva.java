@@ -19,8 +19,8 @@ public class Juego_primitiva {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        //Aquí estoy defiiendo las variables
-      
+       
+        boolean exit = false;
         boolean repeated_number = false;
         int numero = 0;
         boolean comprobador_num = false;
@@ -64,52 +64,61 @@ public class Juego_primitiva {
 
             System.out.println(secuencia_num[i]);
         }
+
         do {
-            
+
             comprobador_num = false;
 
             //Ahora solicito al usuario que introduzca un número 
-            System.out.println(" ");
             System.out.println("Introduce un número mayor que 10 y menor que 100");
             numero = reader.nextInt();
-            
-          
 
-            contador++;
+            if (numero != 0) {
+                for (int j = 0; j < secuencia_num.length; j++) {
 
-            for (int j = 0; j < secuencia_num.length; j++) {
+                    if (secuencia_num[j] == numero) {
+                        comprobador_num = true;
 
-                if (secuencia_num[j] == numero) {
-                    comprobador_num = true;
+                        //Con esto lo que hago es convertir ese número a String para
+                        //poder añadirlo al array de cruces que es de tipo String
+                        cruces[j] = String.valueOf(numero);
 
-                    //Con esto lo que hago es convertir ese número a String para
-                    //poder añadirlo al array de cruces que es de tipo String
-                    cruces[j] = String.valueOf(numero);
+                    }
 
                 }
 
+                if (comprobador_num == true) {
+
+                    //Cada vez que el número sea correcto el contador suma 1
+                    System.out.println("El número " + numero + " es correcto");
+                    contador++;
+                } else {
+
+                    System.out.println("El número " + numero + " no es correcto");
+                    tries--;
+                }
+
+                for (int j = 0; j < secuencia_num.length; j++) {
+
+                    System.out.print(cruces[j] + " ");
+                }
+                System.out.println(" ");
+
             }
 
-            if (comprobador_num == true) {
+        } while (contador < secuencia_num.length && numero != 0 && tries > 0);
 
-                System.out.println("El número " + numero + " es correcto");
+        //Si contador++ al final resulta tener un valor igual a la longitud del
+        //boleto significa que todos los números introducidos han sido correctos
+        //y que por lo tanto eres millonaro¡io/a
+        if (contador == secuencia_num.length) {
+            System.out.println("Eres millonario");
 
-            } else {
-
-                System.out.println("El número " + numero + " no es correcto");
-
-            }
-
-            for (int j = 0; j < secuencia_num.length; j++) {
-
-                System.out.print(cruces[j] + " ");
-            }
-            
-            
-
-        } while (contador < secuencia_num.length && tries>0);
-        
-        
-
+        } else if (tries == 0) {
+            System.out.println("Eres pobre ,intentalo otra vez");
+        } else {
+            System.out.println("Has salido");
+        }
     }
+
 }
